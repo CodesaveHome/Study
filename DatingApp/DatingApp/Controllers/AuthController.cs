@@ -15,7 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace DatingApp.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[Controller]")]
     [ApiController]
     public class AuthController : ControllerBase
@@ -31,7 +31,7 @@ namespace DatingApp.Controllers
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
+        public async Task<IActionResult> Register([FromBody] UserForRegisterDto userForRegisterDto)
         {
             userForRegisterDto.username = userForRegisterDto.username.ToLower();
             if (await _repo.UserExists(userForRegisterDto.username))
@@ -45,9 +45,10 @@ namespace DatingApp.Controllers
 
 
         }
+        
         [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
+        public async Task<IActionResult> Login( [FromBody] UserForLoginDto userForLoginDto)
         {
             var userFromRepo = await _repo.Login(userForLoginDto.username, userForLoginDto.password);
             if (userFromRepo == null)
