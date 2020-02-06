@@ -1,3 +1,4 @@
+import { AlertifyService } from './../_services/alertify.service';
 
 import { AuthService } from './../_services/auth.service';
 import { Employee } from "./../Models/test.modal";
@@ -14,15 +15,15 @@ export class NavComponent implements OnInit {
 
   abc = new LoginModel();
 
-  constructor(private authservice: AuthService) {}
+  constructor(private authservice: AuthService, private alertify: AlertifyService) {}
 
   ngOnInit() {}
 
    login(value) {
       this.authservice.login(value).subscribe( next => {
-        console.log('logedin');
+      this.alertify.success('successfully logged In.');
       }, error => {
-        console.log('failed to login');
+        this.alertify.error('Login failed.');
       });
    }
 loggedIn()
@@ -34,7 +35,7 @@ loggedIn()
 
 logout(){
   localStorage.removeItem('token');
-  console.log('lggged out');
+  this.alertify.warning('Logged Out');
 }
 
 
