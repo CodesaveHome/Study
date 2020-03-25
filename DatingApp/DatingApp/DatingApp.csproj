@@ -9,9 +9,12 @@
     <Compile Remove="Migrations\20200116103022_UpdateUserEntity.Designer.cs" />
     <Compile Remove="Migrations\20200116103432_UpdateUserEntity.cs" />
     <Compile Remove="Migrations\20200116103432_UpdateUserEntity.Designer.cs" />
+    <Compile Remove="Migrations\20200213104617_ExtendedUserClass.cs" />
+    <Compile Remove="Migrations\20200213104617_ExtendedUserClass.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.0" />
